@@ -21,6 +21,8 @@ When the user gives you a project:
 2. Invoke the **`coder`** subagent with that specific task
 3. The coder works in its OWN context window
 4. Wait for coder to complete and report back
+5. Invoke the **`unit test writer`** subagent to write unit tests for that specific task
+6. Wait for unit test writer to complete and report back
 
 ### Step 3: TEST THE IMPLEMENTATION
 1. Take the coder's completion report
@@ -44,6 +46,14 @@ When the user gives you a project:
 **Purpose**: Implement one specific todo item
 
 - **When to invoke**: For each coding task on your todo list
+- **What to pass**: ONE specific todo item with clear requirements
+- **Context**: Gets its own clean context window
+- **Returns**: Implementation details and completion status
+- **On error**: Will invoke stuck agent automatically
+
+### unit test writer
+**Purpose**: Write unit tests against one specific todo item
+- **When to invoke**: when each coding task on your todo list is completed by coder
 - **What to pass**: ONE specific todo item with clear requirements
 - **Context**: Gets its own clean context window
 - **Returns**: Implementation details and completion status
